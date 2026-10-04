@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- BAL OLDALI PRANK HIRDETÉS -->
+    <aside class="ad-banner ad-left">
+        <button class="ad-close-btn" title="Bezárás">&times;</button>
+        <div class="ad-content" id="ad-left-content">
+            <span class="ad-tag">REKLÁM</span>
+            <h3>🚀 Még mindig lassú a fókusza?</h3>
+            <p>Kattintson ide a prémium Focus Hub eléréséhez!</p>
+            <button class="ad-action-btn">Megnyitás</button>
+        </div>
+    </aside>
+
+    <!-- JOBB OLDALI PRANK HIRDETÉS -->
+    <aside class="ad-banner ad-right">
+        <button class="ad-close-btn" title="Bezárás">&times;</button>
+        <div class="ad-content" id="ad-right-content">
+            <span class="ad-tag">SZPONZORÁLT</span>
+            <h3>🐟 ÓRIÁSI CSUKA AKCIÓ!</h3>
+            <p>A legjobb horgászfelszerelések most 80% kedvezménnyel!</p>
+            <button class="ad-action-btn">Irány a Pecázás</button>
+        </div>
+    </aside>
+
+    <!-- PRANK MINI JÁTÉK MODAL (Ha az [X]-re kattintanak) -->
+    <div id="game-modal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <h3>⚠️ Reklám bezárási próbálkozás észlelve!</h3>
+            <p>A bezáráshoz nyerj meg egy gyors ugrálós játékot! (Nyomd meg a <b>SPACE</b>-t vagy <b>Kattints</b> az ugráshoz)</p>
+            <div class="game-container">
+                <canvas id="gameCanvas" width="400" height="150"></canvas>
+            </div>
+            <p id="game-status">Pontszám: <span id="game-score">0</span> / 5</p>
+            <button id="close-game-btn" class="btn-plain" disabled>Győzz a bezáráshoz!</button>
+        </div>
+    </div>
+
+    <!-- FŐ DOKUMENTUM CONTAINER -->
+    <div class="container">
+        <!-- Fejléc -->
+        <header>
+            <div>
+                <h1 id="greeting">Jó napot!</h1>
+                <p id="clock">00:00:00</p>
+            </div>
+            <button id="theme-toggle" class="btn-plain">Téma váltás</button>
+        </header>
+
+        <!-- Napi Fő Cél -->
+        <section class="card goal-card">
+            <h2>Mai fő fókusz</h2>
+            <input type="text" id="main-goal" placeholder="Mi a mai legfontosabb feladatod?">
+        </section>
+
+        <!-- Fő Rács -->
+        <main class="grid">
+            
+            <!-- 1. Pomodoro Időzítő -->
+            <section class="card">
+                <h2>Fókusz Időzítő</h2>
+                <div class="timer-display" id="timer-display">25:00</div>
+                <div class="button-group">
+                    <button id="start-btn" class="btn-plain">Start</button>
+                    <button id="pause-btn" class="btn-plain">Szünet</button>
+                    <button id="reset-btn" class="btn-plain">Alaphelyzet</button>
+                </div>
+            </section>
+
+            <!-- 2. Teendők -->
+            <section class="card">
+                <h2>Teendők</h2>
+                <form id="todo-form">
+                    <input type="text" id="todo-input" placeholder="Új feladat..." required>
+                    <button type="submit" class="btn-plain">+</button>
+                </form>
+                <ul id="todo-list" class="todo-list"></ul>
+            </section>
+
+            <!-- 3. Vízfogyasztás Követő -->
+            <section class="card">
+                <h2>Vízfogyasztás</h2>
+                <div class="water-tracker">
+                    <p><span id="water-count">0</span> / 8 pohár</p>
+                    <div class="button-group">
+                        <button id="add-water" class="btn-plain">+1 Pohár</button>
+                        <button id="reset-water" class="btn-plain">Nullázás</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Motivációs Idézet -->
+            <section class="card">
+                <h2>Napi Idézet</h2>
+                <p id="quote-text" class="quote">"A legegyszerűbb megoldások a legjobbak."</p>
+                <button id="new-quote" class="btn-plain margin-top">Új idézet</button>
+            </section>
+
+            <!-- 5. Gyors Jegyzetek -->
+            <section class="card full-width">
+                <h2>Gyors Jegyzet</h2>
+                <textarea id="quick-notes" placeholder="Gondolatok, ötletek... (Auto-mentés)"></textarea>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

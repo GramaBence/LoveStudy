@@ -1,0 +1,236 @@
+/* --- Téma Változók --- */
+:root {
+    --bg: #fafafa;
+    --card-bg: #ffffff;
+    --text: #111111;
+    --text-muted: #666666;
+    --border: #e5e5e5;
+    --border-hover: #111111;
+    --radius: 8px;
+}
+
+[data-theme="dark"] {
+    --bg: #121212;
+    --card-bg: #1a1a1a;
+    --text: #ffffff;
+    --text-muted: #888888;
+    --border: #2a2a2a;
+    --border-hover: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    padding: 2rem 1rem;
+    display: flex;
+    justify-content: center;
+    line-height: 1.5;
+    position: relative;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 750px;
+}
+
+/* --- REKLÁM SÁVOK (Prank Ads) --- */
+.ad-banner {
+    position: fixed;
+    top: 50px;
+    width: 160px;
+    background: #fff0f0;
+    border: 2px dashed #ff4444;
+    border-radius: var(--radius);
+    padding: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    z-index: 100;
+    animation: pulse 2s infinite alternate;
+}
+
+[data-theme="dark"] .ad-banner {
+    background: #2a1515;
+    border-color: #ff5555;
+}
+
+.ad-left { left: 20px; }
+.ad-right { right: 20px; }
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.03); }
+}
+
+.ad-close-btn {
+    position: absolute;
+    top: 2px;
+    right: 6px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #888;
+    cursor: pointer;
+}
+
+.ad-close-btn:hover { color: #ff0000; }
+
+.ad-tag {
+    font-size: 0.65rem;
+    background: #ff4444;
+    color: white;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.ad-content h3 {
+    font-size: 0.85rem;
+    margin: 8px 0 4px 0;
+}
+
+.ad-content p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.ad-action-btn {
+    width: 100%;
+    background: #ff4444;
+    color: white;
+    border: none;
+    padding: 6px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.ad-action-btn:hover { background: #cc0000; }
+
+/* Elrejtés kisebb kijelzőkön (Mobilon) */
+@media (max-width: 1150px) {
+    .ad-banner { display: none; }
+}
+
+/* --- MINI JÁTÉK MODAL --- */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-overlay.hidden { display: none; }
+
+.modal-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 20px;
+    border-radius: var(--radius);
+    max-width: 440px;
+    width: 90%;
+    text-align: center;
+}
+
+.modal-card h3 { margin-bottom: 8px; font-size: 1.1rem; }
+.modal-card p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; }
+
+#gameCanvas {
+    background: #eee;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto 10px auto;
+}
+
+[data-theme="dark"] #gameCanvas { background: #333; }
+
+/* --- Dashboard Alap Stílusok --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+}
+
+h1 { font-size: 1.5rem; font-weight: 600; }
+#clock { font-size: 0.9rem; color: var(--text-muted); }
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.full-width { grid-column: 1 / -1; }
+.card h2 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.btn-plain {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.5rem 0.8rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.btn-plain:hover { border-color: var(--border-hover); }
+.btn-plain:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.button-group { display: flex; gap: 0.5rem; }
+
+input[type="text"], textarea {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.6rem;
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.goal-card { margin-bottom: 1.5rem; }
+.timer-display { font-size: 3rem; font-weight: 300; margin: 0.5rem 0 1rem 0; text-align: center; }
+#todo-form { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+.todo-list { list-style: none; }
+.todo-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.5rem 0; border-bottom: 1px solid var(--border); font-size: 0.9rem;
+}
+.todo-item.completed span { text-decoration: line-through; color: var(--text-muted); }
+.delete-btn { background: none; border: none; color: var(--text-muted); cursor: pointer; }
+.water-tracker { text-align: center; }
+.water-tracker p { font-size: 1.25rem; margin-bottom: 1rem; }
+.quote { font-style: italic; font-size: 0.95rem; color: var(--text-muted); flex-grow: 1; }
+.margin-top { margin-top: 1rem; align-self: flex-start; }
+textarea { min-height: 100px; resize: vertical; }
